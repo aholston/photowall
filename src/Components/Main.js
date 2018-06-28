@@ -1,8 +1,8 @@
 import React, { Component }from 'react';
 import Photowall from './Photowall';
-
-
-import Title from './Title'
+import AddPhoto from './AddPhoto';
+import Title from './Title';
+import { Route } from 'react-router-dom';
 
 
 
@@ -25,13 +25,43 @@ class Main extends Component {
      id: "2",
      description: "On a vacation!",
      imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
-     }]
+   }],
+   screen: 'photos'
   }
-}  render() {
+  this.removePhoto = this.removePhoto.bind(this)
+  this.addPhoto = this.addPhoto.bind(this)
+
+
+
+}
+
+  removePhoto(postRemoved) {
+    this.setState((state) => ({
+      posts: state.posts.filter((post) => post !== postRemoved)
+    }))
+  }
+
+  addPhoto(postSubmitted) {
+    this.setState((state) => ({
+      posts: state.posts.concat([postSubmitted])
+    }))
+  }
+
+  render() {
     return (
       <div>
-        <Title title='Photowall'/>
-        <Photowall posts = {this.state.posts} />
+      <Route exact path = '/' render = {() => (
+        <div>
+         <Title title='PhotoWall'/>
+         <Photowall posts = {this.state.posts} onRemovePhoto = { this.removePhoto } />
+        </div>
+
+      )}/>
+        <Route path = '/AddPhoto' render = {({history}) => {return <AddPhoto onAddPhoto = {(addedPost) => {
+          this.addPhoto(addedPost)
+          history.push('/')
+        }}/>
+      }}/>
       </div>
     )
   }
