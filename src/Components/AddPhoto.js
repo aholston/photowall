@@ -26,7 +26,6 @@ class AddPhoto extends Component {
   render() {
     return (
       <div>
-        
         <div className='form'>
           <form onSubmit = {this.handleSubmit}>
             <input type='text' placeholder='Link' name='link'/>
