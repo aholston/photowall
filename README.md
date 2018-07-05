@@ -1,4 +1,7 @@
 <img src='images/photo1.png'>
+<img src='images/photo2.png'>
+<img src='images/photo3.png'>
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
