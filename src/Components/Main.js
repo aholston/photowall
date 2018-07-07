@@ -7,10 +7,10 @@ import { Route, Link} from 'react-router-dom';
 
 
 class Main extends Component {
-  constructor()
-{
-  super();
-}
+
+  componentDidMount() {
+    this.props.startLoadingPosts()
+  }
 
 
   render() {
