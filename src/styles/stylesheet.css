@@ -186,7 +186,7 @@ button:hover,.button:hover, button:focus, .button:focus {
  background: #7B8589;
 }
 .loader {
- height: 20%;
+ height: 30%;
  width: 100%;
  display: flex;
  position: fixed;
